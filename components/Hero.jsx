@@ -23,7 +23,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="flex flex-col !px-[5%] !pt-[8rem]   w-[100%] items-center z-30 gap-[3rem] justify-center two">
+    <div className="flex flex-col !px-[5%] md:!pt-[10rem] lg:!pt-[8rem] w-[100%] items-center z-30 gap-[3rem] justify-center two">
       <div className="flex flex-col gap-5 items-center justify-center">
         <div className="text-2xl md:text-3xl lg:text-4xl font-bold    flex flex-wrap items-center justify-center gap-1">
           We&nbsp;
