@@ -23,22 +23,22 @@ const Hero = () => {
   ];
 
   return (
-    <div className="flex flex-col !px-[5%] md:!pt-[10rem] lg:!pt-[8rem] w-[100%] items-center z-30 gap-[3rem] justify-center two">
-      <div className="flex flex-col gap-5 items-center justify-center">
-        <div className="text-2xl md:text-3xl lg:text-4xl font-bold    flex flex-wrap items-center justify-center gap-1">
+    <div className="flex flex-col items-center justify-center min-h-[100vh] md:min-h-[95vh] w-full !px-4 md:!px-[5%] gap-12 z-30">
+      <div className="flex flex-col gap-5 items-center justify-center w-full">
+        <div className="text-2xl md:text-3xl lg:text-4xl font-bold flex flex-wrap items-center justify-center gap-1 w-full text-center">
           We&nbsp;
           <FlipWords words={words} className="inline-block" />
-          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold  two text-center">
+          <div className="text-2xl md:text-3xl lg:text-4xl font-semibold two text-center w-full">
             Your digital Presence
           </div>
         </div>
         <TypewriterEffectSmooth words={typewriterWords} />
       </div>
-      <div className="flex flex-col md:flex-row items-center gap-4">
-        <Button className="w-[300px] rounded-full h-[6vh] bg-white text-black border border-gray-300 hover:bg-emerald-800 hover:text-white transition-all duration-500 cursor-pointer">
+      <div className="flex flex-col md:flex-row items-center gap-4 w-full justify-center">
+        <Button className="w-full md:w-[300px] rounded-full h-[6vh] bg-white text-black border border-gray-300 hover:bg-emerald-800 hover:text-white transition-all duration-500 cursor-pointer">
           Get a Free Quote
         </Button>
-        <Button className="w-[300px] rounded-full h-[6vh] bg-emerald-400 hover:bg-emerald-800 hover:text-white  transition-all duration-500 cursor-pointer">
+        <Button className="w-full md:w-[300px] rounded-full h-[6vh] bg-emerald-400 hover:bg-emerald-800 hover:text-white transition-all duration-500 cursor-pointer">
           See Our Work
         </Button>
       </div>

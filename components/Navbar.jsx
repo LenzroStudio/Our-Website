@@ -66,8 +66,8 @@ const Navbar = () => {
           className="cursor-pointer font-bold flex items-center justify-start"
           onClick={() => setMenuOpen(false)}
         >
-          <Image src={logo} alt="logo" className="w-32 h-32 absolute" />
-          <h1 className="!ml-16 flex flex-col three leading-5 relative ">
+          <Image src={logo} alt="logo" className="w-25 h-25 absolute" />
+          <h1 className="!ml-13 flex flex-col three text-sm leading-5 relative ">
             LENZRO
             <span className="text-emerald-500">
               TEAM{" "}
@@ -79,7 +79,7 @@ const Navbar = () => {
           <Link href={"/Contact-us"}>
             <Button
               className={
-                "!py-2 !px-4 cursor-pointer rounded hover:bg-emerald-500"
+                "!py-2 !px-3 cursor-pointer text-xs rounded hover:bg-emerald-500"
               }
             >
               Contact us
