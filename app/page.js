@@ -13,7 +13,7 @@ export default function Home() {
   const [openMenu , setmenu] = useState(false);
   return (
     <div>
-      <main className="relative flex flex-col gap-8 row-start-2 !py-[5rem] items-center justify-center sm:items-start min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02] overflow-hidden">
+      <main className="relative flex flex-col gap-8 row-start-2 !py-[4rem] items-center justify-center sm:items-start min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02] overflow-hidden">
         {/* Spotlight as background */}
         <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
           <Spotlight />
