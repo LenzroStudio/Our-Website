@@ -3,6 +3,8 @@
 import { useRouter } from "next/navigation";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React from "react";
+import { logo } from "@/public/images";
+import Image from "next/image";
 
 const CustomerService = ({openMenu , setmenu}) => {
   const router = useRouter();
@@ -13,18 +15,11 @@ const CustomerService = ({openMenu , setmenu}) => {
   };
   return (
     <div>
-      {/* Floating Lottie button */}
       <button
         onClick={handleClick}
         aria-label="Contact us" /* screen‑reader label  */
-        className="fixed bottom-8 right-8 rounded-full bg-emerald-500 p-2 active:scale-95 z-40 hover:scale-110 transition-all cursor-pointer"
-      >
-        <DotLottieReact
-          src="https://lottie.host/a09087c0-0b58-4209-885b-235b1e755cb1/Hj3mrWnnV8.lottie"
-          loop
-          autoplay
-          style={{ width: 50, height: 50 }}
-        />
+        className="fixed bottom-8 right-8 rounded-full bg-black dark:bg-neutral-900 !p-4 md:!p-5 active:scale-95 z-40 hover:scale-110 transition-all cursor-pointer">
+          <Image src={logo} alt="Logo" className="w-4 h-4 md:w-5 md:h-5"/>
       </button>
 
       {/* Rest of your page */}

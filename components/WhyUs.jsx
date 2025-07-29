@@ -5,7 +5,7 @@ import React from 'react'
 
 const WhyUs = () => {
   return (
-    <div className="flex flex-col gap-4  !py-[5%] !px-[6%]">
+    <div className="flex flex-col gap-4  !py-[5%] !px-[6%] two">
       <h1 className="text-2xl  font-bold !my-5">Why Choose Us:</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center items-center">
         <div className='flex flex-col gap-5'>

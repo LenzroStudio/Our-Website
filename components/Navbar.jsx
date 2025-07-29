@@ -1,122 +1,184 @@
+"use client";
+
 import React, { useState } from "react";
 import { ModeToggle } from "./Toogle";
 import Link from "next/link";
-import { navLinks } from "@/assets/assets";
+import { NavIcons, navLinks } from "@/assets/assets";
 import { Button } from "./ui/button";
 import { FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { logo } from "@/public/images";
-import { Copy, CopyrightIcon } from "lucide-react";
+import { CopyrightIcon, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+export const metadata = {
+  title: "Navbar | Lenzro Tech",
+  description: "Navigate your Way through the Website.",
+};
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const pathname = usePathname();
+
+  const getIconByName = (name) => {
+    const match = NavIcons.find((item) => item.name === name);
+    return match?.icon || <></>;
+  };
 
   return (
-    <div>
+    <div className="">
       {/* Navbar desktop */}
-      <div className="flex flex-col bg-glass fixed w-screen z-40">
-        <div className="hidden md:grid grid-cols-2 two items-center justify-between !py-[1.5rem] glass !px-[3%] border-b">
+      <div className="flex flex-col  z-40">
+        <div className="hidden md:grid grid-cols-3 two items-center justify-between !py-[1.5rem] glass !px-[2%]">
           <Link
             href={"/"}
-            className="cursor-pointer font-bold flex items-center justify-start"
+            className="font-bold flex items-center justify-start"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
           >
-            <Image src={logo} alt="logo" className="w-32 h-32 absolute" />
-            <h1 className="!ml-16 flex flex-col three leading-5 relative ">
-              LENZRO
-              <span className="text-emerald-500">
-                TEAM{" "}
-                <CopyrightIcon className="w-2 h-2 absolute top-0 left-[108%]" />
+            <Image src={logo} alt="logo" className="w-6 fixed h-6" />
+            <h1 className="!ml-8 text-lg flex relative">
+              Lenzro
+              <span>
+                Tech
+                <CopyrightIcon className="w-2 h-2 absolute top-0 left-[100%]" />
               </span>
             </h1>
           </Link>
-          <div className="flex absolute top-[99%] right-0 bg-glass justify-end   w-full !px-[2rem] !py-3  gap-5">
-            <FaTwitter className="w-4 h-4" />
-            <FaInstagram className="w-4 h-4" />
-            <FaWhatsapp className="w-4 h-4" />
+
+          <div className="flex items-center justify-center gap-4">
+            {navLinks.map((item, index) => (
+              <div
+                className="relative group"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                key={index}
+              >
+                <motion.div className="!px-3 !py-2 rounded-md min-w-[8vw] text-sm cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-900 transition-all duration-500 flex items-center justify-center border-2 border-transparent group-hover:border-transparent relative">
+                  <motion.div
+                    className="absolute inset-0 rounded-lg pointer-events-none z-0"
+                    style={{
+                      border: "2px solid transparent",
+                      WebkitMask:
+                        "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                      maskComposite: "exclude",
+                      animation: "linear 2s infinite",
+                    }}
+                  />
+                  <span className="relative z-10 transition-colors duration-300 flex items-center gap-2">
+                    {item.link}
+                    {item.drop && item.drop.length > 0 && (
+                      <motion.span
+                        initial={false}
+                        animate={{
+                          rotate: hoveredIndex === index ? 180 : 0,
+                        }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 20,
+                        }}
+                        className="ml-1"
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.span>
+                    )}
+                  </span>
+                </motion.div>
+
+                {/* Dropdown */}
+                <AnimatePresence>
+                  {item.drop?.length > 0 && hoveredIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute left-1/2 top-full -translate-x-1/2 !mt-2 min-w-[300px] bg-white dark:bg-black rounded-xl shadow-xl !py-2 !px-2 z-20"
+                    >
+                      {item.drop.map((dropItem) =>
+                        dropItem.url ? (
+                          <Link
+                            href={dropItem.url}
+                            key={dropItem.link}
+                            className="!px-4 !py-3 flex items-center gap-3 text-black dark:text-gray-200 text-sm hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl transition"
+                          >
+                            <div className="border-1 !p-3 border-gray-300 dark:border-white rounded-full">
+                              {getIconByName(dropItem.link)}
+                            </div>
+                            {dropItem.link}
+                          </Link>
+                        ) : null
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
           </div>
 
-          <div className="flex items-center justify-end gap-6">
-            <div className="flex items-center gap-5">
-              {navLinks.map((item, index) => {
-                return (
-                  <Link href={item.url} key={index} className="text-sm group">
-                    <p className="group-hover:text-emerald-500">{item.link}</p>
-                    <hr className="group-hover:h-1 group-hover:bg-emerald-500 group-hover:opacity-100 bg-transparent opacity-0 outline-none transition-all duration-300 rounded-full" />
-                  </Link>
-                );
-              })}
-            </div>
-            <Button
-              className={
-                "!py-2 !px-4 cursor-pointer hover:bg-emerald-800 hover:text-white"
-              }
-            >
-              Contact us
+          <div className="flex items-center w-[95%] justify-end">
+            <ModeToggle  />
+            <Button className="!py-2 !px-4 cursor-pointer fixed hover:bg-yellow-300 hover:text-black">
+              Contact Us
             </Button>
-            <ModeToggle />
           </div>
         </div>
-        <div className="w-1  rounded-full bg-emerald-500"></div>
+        <div className="w-1 rounded-full bg-emerald-500"></div>
       </div>
+
       {/* Mobile Navbar */}
-      <div className="flex items-center justify-between !py-[1rem] bg-glass !px-[5%] border-b fixed w-screen md:hidden z-50">
+      <div className="flex items-center justify-between !py-[1rem] bg-glass !px-[5%] border-b md:hidden z-50">
         <Link
           href={"/"}
-          className="cursor-pointer font-bold flex items-center justify-start"
-          onClick={() => setMenuOpen(false)}
+          className="cursor-pointer font-bold two flex items-center justify-start"
         >
-          <Image src={logo} alt="logo" className="w-25 h-25 absolute" />
-          <h1 className="!ml-13 flex flex-col three text-sm leading-5 relative ">
-            LENZRO
+          <Image src={logo} alt="logo" className="w-6 fixed h-8" />
+          <h1 className="!ml-10 text-lg flex relative">
+            Lenzro
             <span className="text-emerald-500">
-              TEAM{" "}
-              <CopyrightIcon className="w-2 h-2 absolute top-0 left-[108%]" />
+              Tech
+              <CopyrightIcon className="w-2 h-2 absolute top-0 left-[100%]" />
             </span>
           </h1>
         </Link>
         <div className="flex items-center gap-3">
           <Link href={"/Contact-us"}>
-            <Button
-              className={
-                "!py-2 !px-3 cursor-pointer text-xs rounded hover:bg-emerald-500"
-              }
-            >
+            <Button className="!py-2 !px-3 two cursor-pointer text-xs rounded hover:bg-emerald-500">
               Contact us
             </Button>
           </Link>
-          {/* Hamburger/Close Button */}
           <button
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             className="toggle-module__HksKKG__mobileMenuToggle relative z-50 flex items-center justify-center w-10 h-10 border rounded-full"
             data-expanded={menuOpen}
             type="button"
-            style={{ opacity: 1 }}
             onClick={() => setMenuOpen((prev) => !prev)}
           >
-            {/* Top bar */}
             <div
-              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300
-              ${
+              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300 ${
                 menuOpen
                   ? "rotate-45 -translate-x-1/2 -translate-y-1/2"
                   : "-translate-x-1/2 -translate-y-1.5"
               }`}
-              style={{}}
-            ></div>
-            {/* Bottom bar */}
+            />
             <div
-              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300
-              ${
+              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300 ${
                 menuOpen
                   ? "-rotate-45 -translate-x-1/2 -translate-y-1/2"
                   : "-translate-x-1/2 translate-y-1.5"
               }`}
-              style={{}}
-            ></div>
+            />
           </button>
         </div>
       </div>
+
       {/* Mobile Slide Menu */}
       <AnimatePresence>
         {menuOpen && (
@@ -125,19 +187,45 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 w-screen h-screen  bg-white dark:bg-zinc-950 z-40 shadow-lg flex flex-col !p-6 gap-6"
+            className="fixed top-0 two right-0 w-screen h-screen bg-white dark:bg-zinc-950 z-40 shadow-lg flex flex-col !p-6 gap-6"
           >
+            {/* Add Close Button here */}
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="absolute top-4 left-10 !p-2 text-gray-500 hover:text-black dark:hover:text-white bg-gray-200 dark:bg-zinc-800 rounded-full transition z-50"
+              aria-label="Close menu"
+            >
+              <span className="sr-only">Close menu</span>
+              {/* You can use an icon here, e.g. from lucide-react */}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M6 6L14 14M14 6L6 14"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
             <div className="flex flex-col gap-4 !mt-20 !ml-3">
-              {navLinks.map((item, index) => (
-                <Link
-                  href={item.url}
-                  key={index}
-                  className="font-light "
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.link}
-                </Link>
-              ))}
+              {navLinks.map((item, index) =>
+                item.url ? (
+                  <Link
+                    href={item.url}
+                    key={index}
+                    className="font-light two"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.link}
+                  </Link>
+                ) : (
+                  <span
+                    key={index}
+                    className="font-light text-gray-400 cursor-default"
+                  >
+                    {item.link}
+                  </span>
+                )
+              )}
               <ModeToggle />
               <div className="flex gap-4 !mt-6">
                 <FaTwitter className="w-5 h-5" />
@@ -148,7 +236,8 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Overlay when menu is open */}
+
+      {/* Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div

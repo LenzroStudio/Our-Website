@@ -11,7 +11,7 @@ const Projects = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[2rem] !px-[3rem]">
         {projects.map((item, index) => {
           return (
-            <div className="border-2 rounded-2xl">
+            <div className="border-2 rounded-2xl" key={index}>
               {item.isActive ? (
                 <div className="!p-4 flex flex-col gap-4  rounded-2xl">
                   <Image

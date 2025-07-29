@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Code:300,regular,500,600,700);
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Fira+Code:300,regular,500,600,700);
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -10,18 +11,27 @@
   margin: 0;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none; /* for Safari */
+  -moz-user-select: none;    /* for Firefox */
+  -ms-user-select: none;  
 }
 
+/* 
+body {
+  font-family: 'Outfit', 'Poppins', 'Fira Code', 'Montserrat', sans-serif;
+} */
+
 .one{
-  font-family: 'Fira Code';
+  font-family: 'Fira Code ' , sans-serif;
 }
 
 .two {
-  font-family: 'Poppins';
+  font-family: 'Poppins' , sans-serif;
 }
 
 .three{
-  font-family: 'Outfit';
+  font-family: 'Outfit' , sans-serif;
 }
 
 
@@ -68,7 +78,7 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(#f1f0ee);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
@@ -102,7 +112,7 @@
 }
 
 .dark {
-  --background: oklch(0.141 0.005 285.823);
+  --background: oklch(12.275% 0.00289 285.903);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
@@ -149,3 +159,28 @@
   backdrop-filter: blur(30px);
 }
 
+
+
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-gradient-spin {
+  animation: spin 2s linear infinite;
+}
+.gradient-border {
+  position: relative;
+  z-index: 1;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px; /* border thickness */
+  z-index: -1;
+  border-radius: inherit;
+  padding: 0;
+  background: conic-gradient(from 0deg, #10b981, #3b82f6, #ec4899, #10b981);
+  animation: spin 2s linear infinite;
+}

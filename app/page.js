@@ -8,27 +8,23 @@ import Projects from "@/components/Projects";
 import WhyUs from "@/components/WhyUs";
 import OurInfo from "@/components/OurInfo";
 import { useState } from "react";
+import Testimonials from "@/components/Testimonials";
+import WorldMap from "@/components/ui/world-map";
 
 export default function Home() {
   const [openMenu , setmenu] = useState(false);
   return (
     <div>
-      <main className="relative flex flex-col gap-8 row-start-2 !py-[4rem] items-center justify-center sm:items-start min-h-screen bg-black/[0.96] antialiased bg-grid-white/[0.02] overflow-hidden">
-        {/* Spotlight as background */}
-        <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-          <Spotlight />
+      <main className="!px-[2rem] !py-4 md:!py-0 flex flex-col gap-[4rem] justify-center items-center">
+        <Hero />
+        <div>
+          <h1>All in One for Your Brand</h1>
+          <div>
+            
+          </div>
         </div>
-        {/* Content above the spotlight */}
-        <div className="relative z-10 w-full">
-          <OurInfo openMenu={openMenu}/>
-          <CustomerService openMenu={openMenu} setmenu={setmenu}/>
-          <Hero />
-        </div>
+        <CustomerService />
       </main>
-      <WhyUs/>
-      <OurServices />
-      <Packages/>
-      <Projects/>
     </div>
   );
 }
