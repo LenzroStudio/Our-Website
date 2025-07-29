@@ -149,11 +149,6 @@ const Navbar = () => {
           </h1>
         </Link>
         <div className="flex items-center gap-3">
-          <Link href={"/Contact-us"}>
-            <Button className="!py-2 !px-3 two cursor-pointer text-xs rounded hover:bg-emerald-500">
-              Contact us
-            </Button>
-          </Link>
           <button
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             className="toggle-module__HksKKG__mobileMenuToggle relative z-50 flex items-center justify-center w-10 h-10 border rounded-full"

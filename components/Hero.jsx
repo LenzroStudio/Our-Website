@@ -62,10 +62,10 @@ const Hero = () => {
       onMouseLeave={() => setHovered(null)}
     >
       {/* Plus Icons */}
-      <Sparkle className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-green-500" />
-      <Sparkle className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-cyan-500" />
-      <Sparkle className="absolute h-6 w-6 -top-3 -right-3 dark:text-white text-pink-500" />
-      <Sparkle className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-yellow-500" />
+      <PlusIcon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white t" />
+      <PlusIcon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
+      <PlusIcon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
+      <PlusIcon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
 
       {/* CORNER IMAGES FOR SMALL SCREENS */}
       <div className="block lg:hidden">
