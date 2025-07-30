@@ -9,7 +9,12 @@ import { FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { logo } from "@/public/images";
-import { CopyrightIcon, ChevronDown } from "lucide-react";
+import {
+  CopyrightIcon,
+  ChevronDown,
+  ArrowLeft,
+  ChevronRight,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export const metadata = {
@@ -20,11 +25,22 @@ export const metadata = {
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [submenu, setSubmenu] = useState(null); // Add this state
   const pathname = usePathname();
 
   const getIconByName = (name) => {
     const match = NavIcons.find((item) => item.name === name);
     return match?.icon || <></>;
+  };
+
+  // Animation variants
+  const listVariants = {
+    visible: { transition: { staggerChildren: 0.12 } },
+    hidden: {},
+  };
+  const itemVariants = {
+    hidden: { x: 40, opacity: 0 },
+    visible: { x: 0, opacity: 1 },
   };
 
   return (
@@ -124,7 +140,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center w-[95%] justify-end">
-            <ModeToggle  />
+            <ModeToggle />
             <Button className="!py-2 !px-4 cursor-pointer fixed hover:bg-yellow-300 hover:text-black">
               Contact Us
             </Button>
@@ -134,13 +150,13 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navbar */}
-      <div className="flex items-center justify-between !py-[1rem] bg-glass !px-[5%] border-b md:hidden z-50">
+      <div className="flex items-center justify-between !py-[1rem] bg-glass !px-[5%] border-b  md:hidden z-50">
         <Link
           href={"/"}
           className="cursor-pointer font-bold two flex items-center justify-start"
         >
-          <Image src={logo} alt="logo" className="w-6 fixed h-8" />
-          <h1 className="!ml-10 text-lg flex relative">
+          <Image src={logo} alt="logo" className="w-5 fixed h-8" />
+          <h1 className="!ml-8 text-md flex relative">
             Lenzro
             <span className="text-emerald-500">
               Tech
@@ -157,14 +173,14 @@ const Navbar = () => {
             onClick={() => setMenuOpen((prev) => !prev)}
           >
             <div
-              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300 ${
+              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-black dark:bg-white rounded transition-all duration-300 ${
                 menuOpen
                   ? "rotate-45 -translate-x-1/2 -translate-y-1/2"
                   : "-translate-x-1/2 -translate-y-1.5"
               }`}
             />
             <div
-              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-emerald-500 rounded transition-all duration-300 ${
+              className={`absolute left-1/2 top-1/2 w-5 h-0.5 bg-black dark:bg-white rounded transition-all duration-300 ${
                 menuOpen
                   ? "-rotate-45 -translate-x-1/2 -translate-y-1/2"
                   : "-translate-x-1/2 translate-y-1.5"
@@ -181,52 +197,116 @@ const Navbar = () => {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 two right-0 w-screen h-screen bg-white dark:bg-zinc-950 z-40 shadow-lg flex flex-col !p-6 gap-6"
+            transition={{ type: "spring", stiffness: 200, damping: 30 }}
+            className="fixed two right-0 w-screen h-screen bg-white dark:bg-black z-40 shadow-lg flex flex-col !p-6 gap-6"
           >
-            {/* Add Close Button here */}
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="absolute top-4 left-10 !p-2 text-gray-500 hover:text-black dark:hover:text-white bg-gray-200 dark:bg-zinc-800 rounded-full transition z-50"
-              aria-label="Close menu"
-            >
-              <span className="sr-only">Close menu</span>
-              {/* You can use an icon here, e.g. from lucide-react */}
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M6 6L14 14M14 6L6 14"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
             <div className="flex flex-col gap-4 !mt-20 !ml-3">
-              {navLinks.map((item, index) =>
-                item.url ? (
-                  <Link
-                    href={item.url}
-                    key={index}
-                    className="font-light two"
-                    onClick={() => setMenuOpen(false)}
+              {/* If submenu is open, show dropdown content */}
+              <AnimatePresence mode="wait">
+                {submenu ? (
+                  <motion.ul
+                    key="submenu"
+                    className="flex flex-col gap-4 text-lg"
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={listVariants}
                   >
-                    {item.link}
-                  </Link>
+                    <motion.li
+                      variants={itemVariants}
+                      className="flex items-center mb-4"
+                    >
+                      <button
+                        className="flex items-center justify-center w-9 h-9 rounded-full bg-gray-200 dark:bg-zinc-800"
+                        onClick={() => setSubmenu(null)}
+                      >
+                        <ArrowLeft className="w-5 h-5 text-gray-700 dark:text-gray-200" />
+                      </button>
+                    </motion.li>
+                    {submenu.drop.map((dropItem) =>
+                      dropItem.url ? (
+                        <motion.li variants={itemVariants} key={dropItem.link}>
+                          <Link
+                            href={dropItem.url}
+                            className="font-light two flex items-center gap-3"
+                            onClick={() => {
+                              setMenuOpen(false);
+                              setSubmenu(null);
+                            }}
+                          >
+                            <span className="border-1 !p-2 border-gray-300 dark:border-white rounded-full">
+                              {getIconByName(dropItem.link)}
+                            </span>
+                            {dropItem.link}
+                          </Link>
+                        </motion.li>
+                      ) : (
+                        <motion.li
+                          variants={itemVariants}
+                          key={dropItem.link}
+                          className="font-light text-gray-400 cursor-default flex items-center gap-3"
+                        >
+                          <span className="border-1 p-2 border-gray-300 dark:border-white rounded-full">
+                            {getIconByName(dropItem.link)}
+                          </span>
+                          {dropItem.link}
+                        </motion.li>
+                      )
+                    )}
+                  </motion.ul>
                 ) : (
-                  <span
-                    key={index}
-                    className="font-light text-gray-400 cursor-default"
+                  <motion.ul
+                    key="mainmenu"
+                    className="flex flex-col gap-4 text-lg"
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    variants={listVariants}
                   >
-                    {item.link}
-                  </span>
-                )
-              )}
-              <ModeToggle />
-              <div className="flex gap-4 !mt-6">
-                <FaTwitter className="w-5 h-5" />
-                <FaInstagram className="w-5 h-5" />
-                <FaWhatsapp className="w-5 h-5" />
-              </div>
+                    {navLinks.map((item, index) =>
+                      item.url ? (
+                        <motion.li variants={itemVariants} key={index}>
+                          <Link
+                            href={item.url}
+                            className="font-light two"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            {item.link}
+                          </Link>
+                        </motion.li>
+                      ) : item.drop && item.drop.length > 0 ? (
+                        <motion.li variants={itemVariants} key={index}>
+                          <button
+                            className="font-light two text-left flex items-center gap-2"
+                            onClick={() => setSubmenu(item)}
+                          >
+                            {item.link}
+                            <ChevronRight className="w-4 h-4 ml-1" />
+                          </button>
+                        </motion.li>
+                      ) : (
+                        <motion.li
+                          variants={itemVariants}
+                          key={index}
+                          className="font-light text-gray-400 cursor-default"
+                        >
+                          {item.link}
+                        </motion.li>
+                      )
+                    )}
+                    <motion.li variants={itemVariants}>
+                      <ModeToggle onClick={() => setMenuOpen(false)} />
+                    </motion.li>
+                    <motion.li variants={itemVariants}>
+                      <div className="flex gap-4 !mt-6">
+                        <FaTwitter className="w-5 h-5" />
+                        <FaInstagram className="w-5 h-5" />
+                        <FaWhatsapp className="w-5 h-5" />
+                      </div>
+                    </motion.li>
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}

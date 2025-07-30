@@ -10,8 +10,7 @@ import {
   P3,
 } from "@/public/images";
 
-
-import {  
+import {
   User,
   Palette,
   MonitorSmartphone,
@@ -29,9 +28,8 @@ import {
   Rocket,
   Handshake,
   Contact,
-  FolderKanban
+  FolderKanban,
 } from "lucide-react";
-
 
 export const navLinks = [
   {
@@ -48,22 +46,18 @@ export const navLinks = [
       {
         link: "Website Development",
         url: "/Services/Website Development",
-        
       },
       {
         link: "Mobile App Development",
         url: "/Services/Mobile App Development",
-        
       },
       {
         link: "Digital Marketing",
         url: "/Services/Digital Marketing",
-        
       },
       {
         link: "Creative Direction",
         url: "/Services/Creative Direction",
-        
       },
       {
         link: "View All",
@@ -120,32 +114,77 @@ export const navLinks = [
   },
   {
     link: "Contact",
-    url: "/Contact"
+    url: "/Contact",
   },
 ];
 
 export const NavIcons = [
-  { name: "Branding & Identity", icon: <Palette  className="w-5 h-5 text-pink-500"/> },
-  { name: "UI/UX Design", icon: <MonitorSmartphone className="w-5 h-5 text-red-500" /> },
-  { name: "Website Development", icon: <Code  className="w-5 h-5 text-cyan-500"/> },
-  { name: "Mobile App Development", icon: <Smartphone className="w-5 h-5 text-yellow-500" /> },
-  { name: "Digital Marketing", icon: <Megaphone className="w-5 h-5 text-fuchsia-500" /> },
-  { name: "Creative Direction", icon: <Compass className="w-5 h-5 text-orange-500" /> },
-  { name: "View All", icon: <Layers className="w-5 h-5 " /> },
+  {
+    name: "Branding & Identity",
+    icon: <Palette className="w-4 h-4 md:w-5 md:h-5 text-pink-500" />,
+  },
+  {
+    name: "UI/UX Design",
+    icon: <MonitorSmartphone className="w-4 h-4 md:w-5 md:h-5 text-red-500" />,
+  },
+  {
+    name: "Website Development",
+    icon: <Code className="w-4 h-4 md:w-5 md:h-5 text-cyan-500" />,
+  },
+  {
+    name: "Mobile App Development",
+    icon: <Smartphone className="w-4 h-4 md:w-5 md:h-5 text-yellow-500" />,
+  },
+  {
+    name: "Digital Marketing",
+    icon: <Megaphone className="w-4 h-4 md:w-5 md:h-5 text-fuchsia-500" />,
+  },
+  {
+    name: "Creative Direction",
+    icon: <Compass className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />,
+  },
+  { name: "View All", icon: <Layers className="w-4 h-4 md:w-5 md:h-5" /> },
 
-  { name: "Industries", icon: <Briefcase className="w-5 h-5 text-emerald-500" /> },
+  {
+    name: "Industries",
+    icon: <Briefcase className="w-4 h-4 md:w-5 md:h-5 text-emerald-500" />,
+  },
 
-  { name: "Portfolio", icon: <Star className="w-5 h-5 text-pink-500" /> },
-  { name: "Client Testimonials", icon: <MessageSquare className="w-5 h-5 text-cyan-500" /> },
-  { name: "Featured Projects", icon: <FolderKanban className="w-5 h-5 text-orange-500" /> },
+  {
+    name: "Portfolio",
+    icon: <Star className="w-4 h-4 md:w-5 md:h-5 text-pink-500" />,
+  },
+  {
+    name: "Client Testimonials",
+    icon: <MessageSquare className="w-4 h-4 md:w-5 md:h-5 text-cyan-500" />,
+  },
+  {
+    name: "Featured Projects",
+    icon: <FolderKanban className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />,
+  },
 
-  { name: "Our Story", icon: <Users className="w-5 h-5 text-red-500" /> },
-  { name: "Our Team", icon: <HeartHandshake className="w-5 h-5 text-green-500" /> },
-  { name: "Careers", icon: <Rocket className="w-5 h-5 text-yellow-500" /> },
-  { name: "Partners", icon: <Handshake className="w-5 h-5 text-orange-500" /> },
-  { name: "Culture & Values", icon: <Building2 className="w-5 h-5 text-fuchsia-500" /> },
+  {
+    name: "Our Story",
+    icon: <Users className="w-4 h-4 md:w-5 md:h-5 text-red-500" />,
+  },
+  {
+    name: "Our Team",
+    icon: <HeartHandshake className="w-4 h-4 md:w-5 md:h-5 text-green-500" />,
+  },
+  {
+    name: "Careers",
+    icon: <Rocket className="w-4 h-4 md:w-5 md:h-5 text-yellow-500" />,
+  },
+  {
+    name: "Partners",
+    icon: <Handshake className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />,
+  },
+  {
+    name: "Culture & Values",
+    icon: <Building2 className="w-4 h-4 md:w-5 md:h-5 text-fuchsia-500" />,
+  },
 
-  { name: "Contact", icon: <Contact /> },
+  { name: "Contact", icon: <Contact className="w-4 h-4 md:w-5 md:h-5" /> },
 ];
 
 export const projects = [
@@ -213,7 +252,6 @@ export const testimonials = [
     name: "Sarah Johnson, UI/UX Designer at DesignPro",
   },
 ];
-
 
 export const OurRoadmp = [
   {

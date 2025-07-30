@@ -15,15 +15,15 @@ export default function Home() {
   const [openMenu , setmenu] = useState(false);
   return (
     <div>
-      <main className="md:!px-[2rem] !py-4 md:!py-0 flex flex-col gap-[4rem] justify-center items-center">
+      <main className=" px-[1rem] md:!px-[2rem] !py-4 md:!py-0 flex flex-col gap-[4rem] justify-center items-center">
         <Hero />
-        <div>
+        {/* <div>
           <h1>All in One for Your Brand</h1>
           <div>
             
           </div>
-        </div>
-        <CustomerService />
+        </div> */}
+        {/* <CustomerService /> */}
       </main>
     </div>
   );

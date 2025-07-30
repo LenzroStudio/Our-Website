@@ -18,7 +18,7 @@ const CustomerService = ({openMenu , setmenu}) => {
       <button
         onClick={handleClick}
         aria-label="Contact us" /* screen‑reader label  */
-        className="fixed bottom-8 right-8 rounded-full bg-black dark:bg-neutral-900 !p-5 active:scale-95 z-40 hover:scale-110 transition-all cursor-pointer">
+        className="fixed bottom-8 right-8 rounded-full bg-black dark:border dark:border-white !p-5 active:scale-95 z-40 hover:scale-110 transition-all cursor-pointer">
           <Image src={logo} alt="Logo" className="w-4 h-4 md:w-5 md:h-5"/>
       </button>
 

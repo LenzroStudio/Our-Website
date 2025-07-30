@@ -57,15 +57,15 @@ const Hero = () => {
 
   return (
     <div
-      className="border group transition-all duration-500 border-black/[0.2] dark:border-white/[0.2]  !p-5 md:!p-4 relative "
+      className="md:border group transition-all duration-500 md:border-black/[0.2] md:dark:border-white/[0.2] !px-[1rem] !p-5 md:!p-4 relative "
       onMouseMove={hovered && isMdUp ? handleMouseMove : undefined}
       onMouseLeave={() => setHovered(null)}
     >
       {/* Plus Icons */}
-      <PlusIcon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white t" />
-      <PlusIcon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
-      <PlusIcon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
-      <PlusIcon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
+      <PlusIcon className="hidden md:absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
+      <PlusIcon className="hidden md:absolute h-6 w-6 -top-3 -left-3 dark:text-white" />
+      <PlusIcon className="hidden md:absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
+      <PlusIcon className="hidden md:absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
 
       {/* CORNER IMAGES FOR SMALL SCREENS */}
       <div className="block lg:hidden">
@@ -73,7 +73,7 @@ const Hero = () => {
         <div className="absolute top-2 left-2 z-10">
           <Image
             src={one}
-            className="w-16 h-16 rounded-md object-cover"
+            className="hidden md:w-16 md:h-16 rounded-md object-cover"
             alt="one"
           />
         </div>
@@ -81,7 +81,7 @@ const Hero = () => {
         <div className="absolute bottom-2 left-2 z-10">
           <Image
             src={two}
-            className="w-16 h-16 rounded-md object-cover"
+            className="hidden md:w-16 md:h-16 rounded-md object-cover"
             alt="two"
           />
         </div>
@@ -89,7 +89,7 @@ const Hero = () => {
         <div className="absolute top-2 right-2 z-10">
           <Image
             src={four}
-            className="w-16 h-16 rounded-md object-cover"
+            className="hidden md:w-16 md:h-16 rounded-md object-cover"
             alt="four"
           />
         </div>
@@ -97,7 +97,7 @@ const Hero = () => {
         <div className="absolute bottom-2 right-2 z-10">
           <Image
             src={five}
-            className="w-16 h-16 rounded-md object-cover"
+            className="hidden md:w-16 md:h-16 rounded-md object-cover"
             alt="five"
           />
         </div>
@@ -124,7 +124,7 @@ const Hero = () => {
                 className={`transition-all duration-500 px-2 py-1 cursor-none
                   ${
                     hovered === "innovative"
-                      ? "md:bg-cyan-500"
+                      ? "bg-cyan-500"
                       : "border border-blue-400 md:hover:bg-blue-400"
                   }
                   bg-cyan-500 md:bg-transparent
@@ -139,7 +139,7 @@ const Hero = () => {
                 className={`transition-all duration-500 !px-2 !py-1 cursor-none
                   ${
                     hovered === "marketing"
-                      ? "md:bg-pink-500"
+                      ? "bg-pink-500"
                       : "border border-pink-500 md:hover:bg-pink-400"
                   }
                   bg-pink-500 md:bg-transparent
@@ -154,7 +154,7 @@ const Hero = () => {
                 className={`transition-all duration-500 !px-2 !py-1 cursor-none !ml-5
                   ${
                     hovered === "presence"
-                      ? "md:bg-amber-500"
+                      ? "bg-amber-500"
                       : "border border-amber-400 md:hover:bg-amber-400"
                   }
                   bg-amber-500 md:bg-transparent
@@ -187,18 +187,22 @@ const Hero = () => {
       </div>
 
       {/* MIDDLE SECTION FOR SMALL SCREENS */}
-      <div className="flex flex-col items-center gap-[3rem] lg:hidden">
-        <div className="text-xs border !py-1 !px-6 rounded-full">
+      <div className="flex flex-col items-center gap-[2rem] lg:hidden">
+        <div className="text-xs border-2 !py-1 !px-6 rounded-full">
           Business Startups & Brands Trust LenzroTech
         </div>
 
-        <div className="one text-2xl text-center leading-12 md:leading-16 md:text-4xl lg:text-4xl !px-[1rem] !py-[2rem] md:max-w-4xl lg:max-w-6xl">
-          <h1>
+        <div className="one text-2xl leading-12 md:leading-16 md:text-4xl text-left lg:text-4xl !px-[1rem] !py-[2rem] md:max-w-4xl lg:max-w-6xl">
+          <h1 className="border group transition-all duration-500 border-black/[0.2] dark:border-white/[0.2] !px-[1rem] !p-5 md:!p-4 relative">
+            <PlusIcon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
+            <PlusIcon className="absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
+            <PlusIcon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white" />
+            <PlusIcon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
             <span
-              className={`transition-all duration-500 px-2 py-1 cursor-none
+              className={`transition-all duration-500 !px-2 !py-1 cursor-none
                 ${
                   hovered === "innovative"
-                    ? "md:bg-cyan-500"
+                    ? "bg-cyan-500"
                     : "border border-blue-400 md:hover:bg-blue-400"
                 }
                 bg-cyan-500 md:bg-transparent
@@ -213,7 +217,7 @@ const Hero = () => {
               className={`transition-all duration-500 !px-2 !py-1 cursor-none
                 ${
                   hovered === "marketing"
-                    ? "md:bg-pink-500"
+                    ? "bg-pink-500"
                     : "border border-pink-500 md:hover:bg-pink-400"
                 }
                 bg-pink-500 md:bg-transparent
@@ -225,10 +229,10 @@ const Hero = () => {
             </span>{" "}
             &<br /> A Lasting Digital{" "}
             <span
-              className={`transition-all duration-500 !px-2 !py-1 cursor-none !ml-5
+              className={`transition-all duration-500 !px-2 !py-1 cursor-none 
                 ${
                   hovered === "presence"
-                    ? "md:bg-amber-500"
+                    ? "bg-amber-500"
                     : "border border-amber-400 md:hover:bg-amber-400"
                 }
                 bg-amber-500 md:bg-transparent
@@ -242,7 +246,14 @@ const Hero = () => {
         </div>
 
         {/* BUTTONS */}
-        <div className="flex flex-col md:flex-row gap-[1rem] md:gap[4rem]"></div>
+        <div className="flex flex-col md:flex-row gap-[1rem] md:gap[4rem]">
+          <Button className={"!py-5 max-w-[400px] w-[300px]"}>
+            Build your brand
+          </Button>
+          <Button className={"!py-5 max-w-[400px] w-[300px]"}>
+            Our Soultions
+          </Button>
+        </div>
       </div>
 
       {/* CUSTOM CURSOR (only on md+) */}

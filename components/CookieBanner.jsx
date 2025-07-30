@@ -50,7 +50,7 @@ export default function CookieBanner() {
             transition: { duration: 0.5, ease: "backIn" },
           }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="fixed bottom-10 left-6 max-w-md z-[9999] bg-white dark:bg-black dark:text-white
+          className="fixed bottom-10 left-6  md:max-w-md z-[9999] bg-white dark:bg-black dark:text-white
             rounded-2xl !p-8 flex flex-col items-center justify-between gap-8 shadow shadow-gray-300 dark:shadow-gray-950"
         >
           {/* Close button */}
@@ -63,7 +63,7 @@ export default function CookieBanner() {
           </button>
 
           <div>
-            <span className="two">
+            <span className="two text-xs">
               By clicking "Accept Cookies", you agree to the storing of cookies
               on your device to enhance navigation, analyze site usage, and
               assist in our marketing efforts.
