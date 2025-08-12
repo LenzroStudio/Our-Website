@@ -50,20 +50,20 @@ export default function CookieBanner() {
             transition: { duration: 0.5, ease: "backIn" },
           }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-          className="fixed bottom-10 left-6  md:max-w-md z-[9999] bg-white dark:bg-black dark:text-white
+          className="fixed bottom-10 left-4 md:left-6 w-[92vw]  md:max-w-md z-[9999] bg-white dark:bg-white dark:text-black
             rounded-2xl !p-8 flex flex-col items-center justify-between gap-8 shadow shadow-gray-300 dark:shadow-gray-950"
         >
           {/* Close button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-2 text-gray-500 !p-2 bg-gray-200 rounded-full hover:text-black dark:hover:text-white transition"
+            className="absolute top-4 right-2 text-gray-500 !p-2 bg-gray-200 rounded-full hover:text-black cursor-pointer transition"
             aria-label="Close cookie banner"
           >
             <X className="w-4 h-4" />
           </button>
 
-          <div>
-            <span className="two text-xs">
+          <div className="w-[90%]">
+            <span className="two text-xs ">
               By clicking "Accept Cookies", you agree to the storing of cookies
               on your device to enhance navigation, analyze site usage, and
               assist in our marketing efforts.
@@ -72,16 +72,15 @@ export default function CookieBanner() {
 
           <div className="flex gap-2 two font-semibold">
             <Button
-              variant="outline"
               size="sm"
-              className="!px-10 !py-5 cursor-pointer"
+              className="!px-10 !py-5 cursor-pointer bg-white text-black hover:bg-red-400 hover:text-white dark:bg-black dark:text-white dark:hover:bg-red-400"
               onClick={handleDecline}
             >
               Decline
             </Button>
             <Button
               size="sm"
-              className="!px-10 !py-5 cursor-pointer"
+              className="!px-10 !py-5 cursor-pointer hover:bg-yellow-400"
               onClick={handleAccept}
             >
               Accept Cookies
