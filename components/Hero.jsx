@@ -12,13 +12,13 @@ import { five, four, one, six, three, two } from "@/public/images";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Link from "next/link";
 
-
 const Hero = () => {
   const [hovered, setHovered] = useState(null);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
   const rafRef = useRef();
   const [isMdUp, setIsMdUp] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   // Detect screen size for cursor
   useEffect(() => {
@@ -62,10 +62,10 @@ const Hero = () => {
       onMouseLeave={() => setHovered(null)}
     >
       {/* Plus Icons */}
-      <PlusIcon className="hidden md:absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
-      <PlusIcon className="hidden md:absolute h-6 w-6 -top-3 -left-3 dark:text-white" />
-      <PlusIcon className="hidden md:absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
-      <PlusIcon className="hidden md:absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
+      <PlusIcon className="hidden md:flex absolute h-6 w-6 -bottom-3 -left-3 dark:text-white " />
+      <PlusIcon className="hidden md:flex absolute h-6 w-6 -top-3 -left-3 dark:text-white" />
+      <PlusIcon className="hidden md:flex absolute h-6 w-6 -top-3 -right-3 dark:text-white " />
+      <PlusIcon className="hidden md:flex absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
 
       {/* CORNER IMAGES FOR SMALL SCREENS */}
       <div className="block lg:hidden">
@@ -107,15 +107,17 @@ const Hero = () => {
       <div className="hidden lg:flex flex-row items-center justify-between gap-[2rem]">
         {/* LEFT IMAGES */}
         <div className="flex flex-col gap-4 items-center justify-center">
-          <Image src={one} className="w-32 rounded-md" alt="one" />
-          <Image src={two} className="w-32 rounded-md" alt="two" />
-          <Image src={three} className="w-32 rounded-md" alt="three" />
+          <Image src={one} className="w-50 rounded-md" alt="one" />
+          <Image src={two} className="w-50 rounded-md" alt="two" />
+          <Image src={three} className="w-50 rounded-md" alt="three" />
         </div>
 
         {/* MIDDLE SECTION */}
         <div className="flex flex-col items-center gap-[3rem]">
-          <div className="text-xs border !py-1 !px-6 rounded-full">
-            Business Startups & Brands Trust LenzroTech
+          <div className="text-xs  rounded-full codepen-button">
+            <span className="bg-white text-black dark:bg-black dark:text-white">
+              Business Startups & Brands Trust LenzroTech
+            </span>
           </div>
 
           <div className="one text-2xl text-center leading-12 md:leading-16 md:text-4xl lg:text-4xl !px-[1rem] md:max-w-4xl lg:max-w-6xl">
@@ -171,26 +173,29 @@ const Hero = () => {
           <div className="flex items-center gap-[2rem]">
             <Link
               href="/"
-              className="border border-yellow-300 dark:text-black dark:hover:bg-yellow-200 !py-2 !px-20 bg-yellow-300 hover:bg-transparent transition-all duration-500 hover:shadow-xl rounded-md"
+              className="border border-yellow-300 dark:text-black dark:hover:bg-yellow-200 !py-2 !px-20 bg-yellow-300 hover:bg-transparent transition-all duration-500  rounded-md"
+              onClick={() => setShowForm(true)}
             >
-              Build your Brand
+              <span>Build your brand</span>
             </Link>
           </div>
         </div>
 
         {/* RIGHT IMAGES */}
         <div className="flex flex-col gap-4 items-center justify-center">
-          <Image src={four} className="w-32 rounded-md" alt="four" />
-          <Image src={five} className="w-32 rounded-md" alt="five" />
-          <Image src={six} className="w-32 rounded-md" alt="six" />
+          <Image src={four} className="w-50 rounded-md" alt="four" />
+          <Image src={five} className="w-50 rounded-md" alt="five" />
+          <Image src={six} className="w-50 rounded-md" alt="six" />
         </div>
       </div>
 
-      {/* MIDDLE SECTION FOR SMALL SCREENS */}
+      {/* middle section for small screen sizes */}
       <div className="flex flex-col items-center gap-[2rem] lg:hidden">
-        <div className="text-xs border-2 !py-1 !px-6 rounded-full">
-          Business Startups & Brands Trust LenzroTech
-        </div>
+        <Link href={"/"} className="text-xs  rounded-full codepen-button">
+          <span className="bg-white text-black dark:bg-black dark:text-white">
+            Business Startups & Brands Trust LenzroTech
+          </span>
+        </Link>
 
         <div className="one text-2xl leading-12 md:leading-16 md:text-4xl text-left lg:text-4xl !px-[1rem] !py-[2rem] md:max-w-4xl lg:max-w-6xl">
           <h1 className="border group transition-all duration-500 border-black/[0.2] dark:border-white/[0.2] !px-[1rem] !p-5 md:!p-4 relative">
@@ -200,13 +205,13 @@ const Hero = () => {
             <PlusIcon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white" />
             <span
               className={`transition-all duration-500 !px-2 !py-1 cursor-none
-                ${
-                  hovered === "innovative"
-                    ? "bg-cyan-500"
-                    : "border border-blue-400 md:hover:bg-blue-400"
-                }
-                bg-cyan-500 md:bg-transparent
-              `}
+              ${
+                hovered === "innovative"
+                  ? "bg-cyan-500"
+                  : "border border-blue-400 md:hover:bg-blue-400"
+              }
+              bg-cyan-500 md:bg-transparent
+            `}
               onMouseEnter={() => isMdUp && setHovered("innovative")}
               onMouseLeave={() => setHovered(null)}
             >
@@ -215,13 +220,13 @@ const Hero = () => {
             Tech Solutions , Brand{" "}
             <span
               className={`transition-all duration-500 !px-2 !py-1 cursor-none
-                ${
-                  hovered === "marketing"
-                    ? "bg-pink-500"
-                    : "border border-pink-500 md:hover:bg-pink-400"
-                }
-                bg-pink-500 md:bg-transparent
-              `}
+              ${
+                hovered === "marketing"
+                  ? "bg-pink-500"
+                  : "border border-pink-500 md:hover:bg-pink-400"
+              }
+              bg-pink-500 md:bg-transparent
+            `}
               onMouseEnter={() => isMdUp && setHovered("marketing")}
               onMouseLeave={() => setHovered(null)}
             >
@@ -230,13 +235,13 @@ const Hero = () => {
             &<br /> A Lasting Digital{" "}
             <span
               className={`transition-all duration-500 !px-2 !py-1 cursor-none 
-                ${
-                  hovered === "presence"
-                    ? "bg-amber-500"
-                    : "border border-amber-400 md:hover:bg-amber-400"
-                }
-                bg-amber-500 md:bg-transparent
-              `}
+              ${
+                hovered === "presence"
+                  ? "bg-amber-500"
+                  : "border border-amber-400 md:hover:bg-amber-400"
+              }
+              bg-amber-500 md:bg-transparent
+            `}
               onMouseEnter={() => isMdUp && setHovered("presence")}
               onMouseLeave={() => setHovered(null)}
             >
@@ -245,13 +250,18 @@ const Hero = () => {
           </h1>
         </div>
 
+        <div className="w-full flex justify-center absolute bottom-14 ">
+          <div className="gradient-animate h-16 w-[1px]" />
+        </div>
+
         {/* BUTTONS */}
         <div className="flex flex-col md:flex-row gap-[1rem] md:gap[4rem]">
-          <Button className={"!py-5 max-w-[400px] w-[300px]"}>
-            Build your brand
-          </Button>
-          <Button className={"!py-5 max-w-[400px] w-[300px]"}>
-            Our Soultions
+          <Button
+            className=" dark:text-black !py-2 !px-20 bg-yellow-300 rounded-md"
+            style={{ overflow: "hidden" }}
+            onClick={() => setShowForm(true)}
+          >
+            <span>Build your brand</span>
           </Button>
         </div>
       </div>

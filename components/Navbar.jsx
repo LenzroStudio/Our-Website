@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import MultiStepForm from "./MultiStepForm";
 
 export const metadata = {
   title: "Navbar | Lenzro Tech",
@@ -27,6 +28,7 @@ const Navbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [submenu, setSubmenu] = useState(null); // Add this state
   const pathname = usePathname();
+  const [showForm, setShowForm] = useState(false);
 
   const getIconByName = (name) => {
     const match = NavIcons.find((item) => item.name === name);
@@ -58,8 +60,10 @@ const Navbar = () => {
               }
             }}
           >
-            <Image src={logo} alt="logo" className="w-6 fixed h-6" />
-            <h1 className="!ml-8 text-lg flex relative">
+            <div className="!p-2 rounded-md bg-black dark:bg-white  fixed z-50">
+              <Image src={logo} alt="logo" className="w-5  h-5" />
+            </div>
+            <h1 className="!ml-12 text-lg flex relative">
               Lenzro
               <span>
                 Tech
@@ -125,7 +129,7 @@ const Navbar = () => {
                             key={dropItem.link}
                             className="!px-4 !py-3 flex items-center gap-3 text-black dark:text-gray-200 text-sm hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-xl transition"
                           >
-                            <div className="border-1 !p-3 border-gray-300 dark:border-white rounded-full">
+                            <div className="border-2 !p-3 border-gray-300 dark:border-gray-900 rounded-full">
                               {getIconByName(dropItem.link)}
                             </div>
                             {dropItem.link}
@@ -139,15 +143,16 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex items-center w-[95%] justify-end">
+          <div className="flex items-center relative w-[95%] justify-end gap-5">
             <ModeToggle />
-            <Button className="!py-2 !px-4 cursor-pointer fixed hover:bg-yellow-300 hover:text-black">
+            <Button className="!py-2 !px-4 fixed z-50 cursor-pointer  hover:bg-yellow-300 hover:text-black">
               Contact Us
             </Button>
           </div>
         </div>
         <div className="w-1 rounded-full bg-emerald-500"></div>
       </div>
+      {/* <MultiStepForm/> */}
 
       {/* Mobile Navbar */}
       <div className="flex items-center justify-between !py-[1rem] bg-glass !px-[5%] border-b  md:hidden z-50">
@@ -298,7 +303,7 @@ const Navbar = () => {
                       <ModeToggle onClick={() => setMenuOpen(false)} />
                     </motion.li>
                     <motion.li variants={itemVariants}>
-                      <div className="flex gap-4 !mt-6">
+                      <div className="flex gap-4 !mt-10">
                         <FaTwitter className="w-5 h-5" />
                         <FaInstagram className="w-5 h-5" />
                         <FaWhatsapp className="w-5 h-5" />
