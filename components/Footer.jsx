@@ -1,7 +1,15 @@
-import { CopyrightIcon, Instagram, Linkedin, Slack, Sparkles, TwitterIcon, Youtube } from "lucide-react";
+import {
+  CopyrightIcon,
+  Instagram,
+  Linkedin,
+  Slack,
+  Sparkles,
+  TwitterIcon,
+  Youtube,
+} from "lucide-react";
 import React from "react";
 import { Button } from "./ui/button";
-import { FaTiktok } from "react-icons/fa";
+import { FaTiktok, FaWhatsapp } from "react-icons/fa";
 import Link from "next/link";
 import { logo } from "@/public/images";
 import Image from "next/image";
@@ -61,12 +69,16 @@ const communityAvatars = [
 ];
 
 const socialIcons = [
-  { icon: <Linkedin className="w-4 h-4"/> , url: "#" },
-  { icon: <Youtube className="w-4 h-4"/>, url: "#" },
-  { icon: <Instagram className="w-4 h-4"/> , url: "#" },
-  { icon: <FaTiktok className="w-4 h-4"/>, url: "#" },
-  { icon: <TwitterIcon className="w-4 h-4"/>, url: "#" },
-  { icon: <Slack className="w-4 h-4"/>, url: "#" },
+  {
+    icon: <FaWhatsapp className="w-4 h-4" />,
+    url: "https://wa.me/254722261776?text=Hello%20I%27d%20like%20to%20know%20more%20about%20your%20services",
+  },
+  { icon: <Linkedin className="w-4 h-4" />, url: "#" },
+  { icon: <Youtube className="w-4 h-4" />, url: "#" },
+  { icon: <Instagram className="w-4 h-4" />, url: "#" },
+  { icon: <FaTiktok className="w-4 h-4" />, url: "#" },
+  { icon: <TwitterIcon className="w-4 h-4" />, url: "#" },
+  { icon: <Slack className="w-4 h-4" />, url: "#" },
 ];
 
 const Footer = () => {
@@ -200,9 +212,17 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-gray-500 text-sm">Join our community</span>
-            {socialIcons.map((item, index) => {
-              return <div key={index}>{item.icon}</div>;
-            })}
+            {socialIcons.map((item, index) => (
+              <a
+                key={index}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800 transition"
+              >
+                {item.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>

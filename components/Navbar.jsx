@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <div className="">
       {/* Navbar desktop */}
-      <div className="flex flex-col  z-40">
+      <div className="flex flex-col z-40">
         <div className="hidden md:grid grid-cols-3 two items-center justify-between !py-[1.5rem] glass !px-[2%]">
           <Link
             href={"/"}
@@ -80,7 +80,7 @@ const Navbar = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
                 key={index}
               >
-                <motion.div className="!px-3 !py-2 rounded-md min-w-[8vw] text-sm cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-900 transition-all duration-500 flex items-center justify-center border-2 border-transparent group-hover:border-transparent relative">
+                <motion.div className="!px-3 !py-2 rounded-md min-w-[10vw] text-sm cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-900 transition-all duration-500 flex items-center justify-center border-2 border-transparent group-hover:border-transparent relative">
                   <motion.div
                     className="absolute inset-0 rounded-lg pointer-events-none z-0"
                     style={{
@@ -145,8 +145,8 @@ const Navbar = () => {
 
           <div className="flex items-center relative w-[95%] justify-end gap-5">
             <ModeToggle />
-            <Button className="!py-2 !px-4 fixed z-50 cursor-pointer">
-             Start for free
+            <Button className={"!py-2 !px-4 fixed z-50 cursor-pointer"}>
+              <a href="/Survey">Start for free</a>
             </Button>
           </div>
         </div>
@@ -304,9 +304,28 @@ const Navbar = () => {
                     </motion.li>
                     <motion.li variants={itemVariants}>
                       <div className="flex gap-4 !mt-10">
-                        <FaTwitter className="w-5 h-5" />
-                        <FaInstagram className="w-5 h-5" />
-                        <FaWhatsapp className="w-5 h-5" />
+                        <Link
+                          href="https://x.com/lenzrotech"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaTwitter className="w-5 h-5 cursor-pointer hover:text-blue-500" />
+                        </Link>
+                        <Link
+                          href="https://wa.me/254722261776?text=Hello%20I%27d%20like%20to%20know%20more%20about%20your%20services"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaWhatsapp className="w-5 h-5 cursor-pointer hover:text-green-500" />
+                        </Link>
+
+                        <Link
+                          href="https://www.instagram.com/lenzro_tech"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaInstagram className="w-5 h-5 cursor-pointer hover:text-pink-500" />
+                        </Link>
                       </div>
                     </motion.li>
                   </motion.ul>
