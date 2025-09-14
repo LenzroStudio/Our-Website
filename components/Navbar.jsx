@@ -16,7 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import MultiStepForm from "./MultiStepForm";
+import MultiStepForm from "./LeadMagnet";
 
 export const metadata = {
   title: "Navbar | Lenzro Tech",
@@ -60,8 +60,8 @@ const Navbar = () => {
               }
             }}
           >
-            <div className="!p-2 rounded-md bg-black dark:bg-white  fixed z-50">
-              <Image src={logo} alt="logo" className="w-5  h-5" />
+            <div className="!p-3 rounded-full bg-black dark:bg-transparent  fixed z-50">
+              <Image src={logo} alt="logo" className="w-4  h-4" />
             </div>
             <h1 className="!ml-12 text-lg flex relative">
               Lenzro
@@ -145,8 +145,8 @@ const Navbar = () => {
 
           <div className="flex items-center relative w-[95%] justify-end gap-5">
             <ModeToggle />
-            <Button className="!py-2 !px-4 fixed z-50 cursor-pointer  hover:bg-yellow-300 hover:text-black">
-              Contact Us
+            <Button className="!py-2 !px-4 fixed z-50 cursor-pointer">
+             Start for free
             </Button>
           </div>
         </div>

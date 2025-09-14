@@ -1,51 +1,41 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import React from "react";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { countries } from "@/assets/assets";
 
 export default function CountrySelect({ value, onChange }) {
   return (
-    <Autocomplete
-      id="country-select-demo"
-      sx={{ width: 300 }}
-      options={countries}
-      autoHighlight
-      getOptionLabel={(option) => option.label}
-      value={value}
-      onChange={(_, newValue) => onChange(newValue)}
-      renderOption={(props, option) => {
-        const { key, ...optionProps } = props;
-        return (
-          <Box
-            key={key}
-            component="li"
-            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-            {...optionProps}
-          >
-            <img
-              loading="lazy"
-              width="20"
-              srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-              src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-              alt=""
-            />
-            {option.label} ({option.code}) +{option.phone}
-          </Box>
-        );
+    <Select
+      value={value ? value.code : ""}
+      onValueChange={(code) => {
+        const selected = countries.find((c) => c.code === code);
+        onChange(selected || null);
       }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Choose a country"
-          inputProps={{
-            ...params.inputProps,
-            autoComplete: "new-password",
-          }}
-        />
-      )}
-    />
+    >
+      <SelectTrigger>
+        <SelectValue placeholder="Choose a country" />
+      </SelectTrigger>
+      <SelectContent>
+        {countries.map((country) => (
+          <SelectItem key={country.code} value={country.code}>
+            <span className="flex items-center gap-2">
+              <img
+                loading="lazy"
+                width="20"
+                src={`https://flagcdn.com/w20/${country.code.toLowerCase()}.png`}
+                alt=""
+                className="inline-block"
+              />
+              {country.label} ({country.code}) +{country.phone}
+            </span>
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }
-
-// ...countries array (paste your full array here)

@@ -71,8 +71,8 @@ export const navLinks = [
     ],
   },
   {
-    link: "Industries",
-    url: "/TargetAudience",
+    link: "Pricing",
+    url: "/pricing",
     drop: [],
   },
   {
@@ -255,7 +255,7 @@ export const testimonials = [
 export const OurRoadmp = [
   {
     icon: "",
-    color:"border-red-500",
+    color: "border-red-500",
     name: "Branding , Strategy , Design",
     des: "",
     add_ons: [
@@ -269,20 +269,19 @@ export const OurRoadmp = [
   },
   {
     icon: "",
-    color:"border-red-500",
+    color: "border-red-500",
     name: "Development",
     des: "",
     add_ons: ["Web development", "Mobile Apps", "Desktop Apps"],
   },
   {
     icon: "",
-    color:"border-red-500",
+    color: "border-red-500",
     name: "Managment and Training",
     des: "",
     add_ons: ["Staff training", "Social Media managment", "Team Work"],
   },
 ];
-
 
 export const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -709,13 +708,12 @@ export const countries = [
   { code: "ZW", label: "Zimbabwe", phone: "263" },
 ];
 
-
 export const Strategies = [
   {
     type: "Branding",
     des: "We craft a unique identity for your brand, including logos, colors, and style guidelines to make your business stand out.",
     icon: "",
-    color: "border-yellow-500",
+    color: "bg-yellow-500",
     count: 1,
     steps: [
       "Research your target audience",
@@ -725,13 +723,13 @@ export const Strategies = [
       "Design brand style guidelines",
       "Apply branding across all channels",
     ],
-    img: <RocketIcon className="text-yellow-500 !w-4 !h-4" />,
+    img: <RocketIcon className="text-white !w-4 !h-4" />,
   },
   {
     type: "Strategy",
     des: "We develop a clear roadmap to achieve your business goals, backed by data and creative thinking.",
     icon: "",
-    color: "border-red-500",
+    color: "bg-red-500",
     count: 1,
     steps: [
       "Understand business objectives",
@@ -741,13 +739,13 @@ export const Strategies = [
       "Create an action plan",
       "Monitor and adjust strategy",
     ],
-    img: <Stars className="text-red-500 !w-4 !h-4" />,
+    img: <Stars className="text-white !w-4 !h-4" />,
   },
   {
     type: "Development",
     des: "We build functional, scalable, and high-performance solutions tailored to your business needs.",
     icon: "",
-    color: "border-green-500",
+    color: "bg-green-500",
     count: 1,
     steps: [
       "Plan the project architecture",
@@ -757,13 +755,13 @@ export const Strategies = [
       "Test and debug",
       "Deploy to production",
     ],
-    img: <Code2 className="text-green-500 !w-4 !h-4" />,
+    img: <Code2 className="text-white !w-4 !h-4" />,
   },
   {
-    type: "Maintain",
+    type: "Maintainance",
     des: "We ensure your systems run smoothly with regular updates, monitoring, and improvements.",
     icon: "",
-    color: "border-purple-500",
+    color: "bg-purple-500",
     count: 1,
     steps: [
       "Monitor performance",
@@ -773,6 +771,111 @@ export const Strategies = [
       "Backup and protect data",
       "Provide ongoing support",
     ],
-    img: <Workflow className="text-purple-500 !w-4 !h-4" />,
+    img: <Workflow className="text-white !w-4 !h-4" />,
   },
+];
+
+export const companyNiches = [
+  "Technology",
+  "Fashion",
+  "Food & Beverage",
+  "Health & Wellness",
+  "Finance",
+  "Education",
+  "Real Estate",
+  "Travel",
+  "Other",
+];
+
+export const projectTypes = [
+  "Corporate Website",
+  "E-commerce Store",
+  "Mobile App",
+  "Brand Identity",
+  "Digital Marketing Campaign",
+  "Portfolio Website",
+  "Booking Platform",
+  "SaaS Product",
+  "Landing Page",
+  "Other",
+];
+
+export const meetingTimes = [
+  {
+    day: "Monday",
+    slots: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+    ],
+  },
+  {
+    day: "Tuesday",
+    slots: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+    ],
+  },
+  {
+    day: "Wednesday",
+    slots: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+    ],
+  },
+  {
+    day: "Thursday",
+    slots: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+    ],
+  },
+  {
+    day: "Friday",
+    slots: [
+      "8:00",
+      "9:00",
+      "10:00",
+      "11:00",
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+    ],
+  },
+  { day: "Saturday", slots: ["8:00", "9:00", "10:00", "11:00", "12:00"] },
+  { day: "Sunday", slots: [] },
 ];

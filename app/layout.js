@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import CookieBanner from "@/components/CookieBanner";
 import Loading from "./loading";
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
           <Header />
           <Navbar />
           {children}
+          <Footer/>
           <CookieBanner />
         </ThemeProvider>
       </body>

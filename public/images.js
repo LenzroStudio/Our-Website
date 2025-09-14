@@ -20,6 +20,14 @@ import four from "../public/images/4.png";
 import five from "../public/images/5.png";
 import six from "../public/images/6.png"; 
 
+import lyra from "../public/images/lyra.png";
+import brightside from "../public/images/brightside.png";
+import mind from "../public/images/mind1.png";
+import headspace from "../public/images/headspace.png";
+import mente from "../public/images/mente.png";
+import timelycare from "../public/images/timelycare.png";
+
+
 
 export {
   Heroimg,
@@ -39,5 +47,11 @@ export {
   three,
   four,
   five,
-  six
+  six,
+  lyra,
+  brightside,
+  mind,
+  headspace,
+  mente,
+  timelycare,
 };

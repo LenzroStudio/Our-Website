@@ -1,15 +1,8 @@
-// export const metadata = [
-//   {
-//     title: "Hero section page",
-//     description: "The first impression to our website"
-//   }
-// ]
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
-import { Circle, MousePointer2, PlusIcon, Sparkle } from "lucide-react";
+import { MousePointer2, PlusIcon } from "lucide-react";
 import Image from "next/image";
 import { five, four, one, six, three, two } from "@/public/images";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Link from "next/link";
 
 const Hero = () => {
@@ -54,6 +47,7 @@ const Hero = () => {
   const handleMouseMove = (e) => {
     if (isMdUp) setMouse({ x: e.clientX, y: e.clientY });
   };
+  
 
   return (
     <div
@@ -172,7 +166,7 @@ const Hero = () => {
           {/* BUTTONS */}
           <div className="flex items-center gap-[2rem]">
             <Link
-              href="/"
+              href="/Survey"
               className="border border-yellow-300 dark:text-black dark:hover:bg-yellow-200 !py-2 !px-20 bg-yellow-300 hover:bg-transparent transition-all duration-500  rounded-md"
               onClick={() => setShowForm(true)}
             >
@@ -256,13 +250,13 @@ const Hero = () => {
 
         {/* BUTTONS */}
         <div className="flex flex-col md:flex-row gap-[1rem] md:gap[4rem]">
-          <Button
-            className=" dark:text-black !py-2 !px-20 bg-yellow-300 rounded-md"
-            style={{ overflow: "hidden" }}
+          <Link
+            href="/Survey"
+            className="border border-yellow-300 dark:text-black dark:hover:bg-yellow-200 !py-2 !px-20 bg-yellow-300 hover:bg-transparent transition-all duration-500  rounded-md"
             onClick={() => setShowForm(true)}
           >
             <span>Build your brand</span>
-          </Button>
+          </Link>
         </div>
       </div>
 

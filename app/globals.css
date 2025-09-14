@@ -159,6 +159,10 @@ body {
   backdrop-filter: blur(30px);
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 
 
 
