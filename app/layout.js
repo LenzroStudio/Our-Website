@@ -9,6 +9,13 @@ import CookieBanner from "@/components/CookieBanner";
 import Loading from "./loading";
 import Footer from "@/components/Footer";
 
+// ✅ Add metadata here (recommended Next.js 13+ way)
+export const metadata = {
+  title: "Lenzro — Digital Agency in Eastleigh",
+  description:
+    "We are Lenzro, a digital agency helping brands grow through design, marketing, and technology solutions. Driven by creativity and innovation.",
+};
+
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
@@ -34,8 +41,7 @@ export default function RootLayout({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Ensures loading state is only set on the client after mount
-    setLoading(false); // Only triggers after first mount (hydration)
+    setLoading(false);
   }, []);
 
   const [showLoader, setShowLoader] = useState(true);
@@ -45,7 +51,8 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <head>
           <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-          <title>Lenzro Tech</title>
+          {/* fallback title while loading */}
+          <title>Lenzro — Loading...</title>
         </head>
         <body
           className={`${outfit.variable} ${poppins.variable} ${FiraCode.variable} ${montserrat.variable} antialiased two`}
@@ -58,10 +65,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <title>Lenzro Tech</title>
-      </head>
       <body
         className={`${outfit.variable} ${poppins.variable} ${FiraCode.variable} ${montserrat.variable} antialiased two`}
       >
@@ -74,7 +77,7 @@ export default function RootLayout({ children }) {
           <Header />
           <Navbar />
           {children}
-          <Footer/>
+          <Footer />
           <CookieBanner />
         </ThemeProvider>
       </body>
